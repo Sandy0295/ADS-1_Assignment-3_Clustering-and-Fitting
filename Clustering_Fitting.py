@@ -134,3 +134,10 @@ countries_df,years_df = read_data_file('C:/Users/sande/MS-DS/API_19_DS2_en_csv_v
 #selecting the Urban Population values of Austrila as series dataset
 selected_data_series = years_df.iloc[4:,3]
 print('Type of selected data from dataset:',type(selected_data_series))
+
+#converting the series dataset into pandas dataframe
+selected_data_df = selected_data_series.to_frame()
+print('Converted Datatype:',type(selected_data_df))
+
+#resetting the indexes of the dataframe to assign new column names
+selected_data_df = selected_data_df.reset_index()
