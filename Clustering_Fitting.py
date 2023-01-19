@@ -144,3 +144,6 @@ selected_data_df = selected_data_df.reset_index()
 
 #assigning the new column names
 selected_data_df.columns = ['Year','Urban population growth (annual %)']
+
+#plotting the data which prodcues exponential graph
+selected_data_df.plot('Year','Urban population growth (annual %)')
