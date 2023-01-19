@@ -124,3 +124,13 @@ plt.legend()
 plt.grid()
 plt.show()
 
+"""
+Curve Fitting:
+"""
+
+#calling the function with the data set and our own selection of countries.
+countries_df,years_df = read_data_file('C:/Users/sande/MS-DS/API_19_DS2_en_csv_v2_4700503-Copy.csv',['Australia','Bolivia','Canada','Switzerland','Denmark'])
+
+#selecting the Urban Population values of Austrila as series dataset
+selected_data_series = years_df.iloc[4:,3]
+print('Type of selected data from dataset:',type(selected_data_series))
