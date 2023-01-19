@@ -95,3 +95,12 @@ plt.title('Elbow Method')
 plt.xlabel('Clusters')
 plt.ylabel('Inertia Value')
 plt.show()
+
+#forming the clusters based on the elbow method result
+k_means_algo=KMeans(n_clusters=3).fit(normalized_data[['1970','2010']])
+no_of_clusters=selected_df.copy(deep=True)
+#adding cluster output to the new column of the data frame for visiualization purpose
+no_of_clusters['Cluster']=k_means_algo.labels_ 
+
+#fitting the data to produce the centers
+k_means_centers=KMeans(n_clusters=3).fit(selected_df[['1970','2010']])
