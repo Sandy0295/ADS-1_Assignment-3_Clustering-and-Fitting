@@ -160,3 +160,12 @@ selected_data_df['Fit'] = exponen_graph(selected_data_df['Year'], *parameter)
 selected_data_df.plot('Year',['Urban population growth (annual %)','Fit'])
 plt.title('Exponential Growth Graph')
 plt.show()
+
+#calculating the parameter and covariance for the curve fit using the logistic function
+parameter, covariance = curve_fit(logi, selected_data_df['Year'], selected_data_df['Urban population growth (annual %)'], p0=(3e12,0.03,2000.0))
+
+#calculating sigma value using the covariance
+sigma = np.sqrt(np.diag(covariance))
+print('Parameters:', parameter)
+print('Standard Deviation:', sigma)
+selected_data_df['Fit'] = logi(selected_data_df['Year'], *parameter)
