@@ -153,3 +153,10 @@ selected_data_df['Year'] = pd.to_numeric(selected_data_df['Year'])
 
 #calculating the parameter and covariance for the curve fit using the exponential function
 parameter, covariance = curve_fit(exponen_graph,selected_data_df['Year'],selected_data_df['Urban population growth (annual %)'], p0=(73233967692.102798, 0.03))
+
+selected_data_df['Fit'] = exponen_graph(selected_data_df['Year'], *parameter)
+
+#plotting the curve fit with calculated values of exponential function
+selected_data_df.plot('Year',['Urban population growth (annual %)','Fit'])
+plt.title('Exponential Growth Graph')
+plt.show()
