@@ -104,3 +104,23 @@ no_of_clusters['Cluster']=k_means_algo.labels_
 
 #fitting the data to produce the centers
 k_means_centers=KMeans(n_clusters=3).fit(selected_df[['1970','2010']])
+
+# drawing scatter plot: Clump Thickness with Bland Chromatin
+plt.scatter(
+no_of_clusters.loc[no_of_clusters['Cluster']==0]['1970'],
+no_of_clusters.loc[no_of_clusters['Cluster']==0]['2010'],c='b')
+plt.scatter(
+no_of_clusters.loc[no_of_clusters['Cluster']==1]['1970'],
+no_of_clusters.loc[no_of_clusters['Cluster']==1]['2010'],c='r')
+plt.scatter(
+no_of_clusters.loc[no_of_clusters['Cluster']==2]['1970'],
+no_of_clusters.loc[no_of_clusters['Cluster']==2]['2010'],c='g')
+cluster_center = k_means_centers.cluster_centers_
+plt.scatter(cluster_center[:, 0] , cluster_center[:, 1], c='black', s=200, alpha=0.7);
+plt.title('Cluster Graph')
+plt.xlabel('Normalized Range - X-axis')
+plt.ylabel('Normalized Range - Y-axis')
+plt.legend()
+plt.grid()
+plt.show()
+
