@@ -169,3 +169,8 @@ sigma = np.sqrt(np.diag(covariance))
 print('Parameters:', parameter)
 print('Standard Deviation:', sigma)
 selected_data_df['Fit'] = logi(selected_data_df['Year'], *parameter)
+
+#plotting the curve fit with calculated values of logistic function
+selected_data_df.plot('Year', ['Urban population growth (annual %)', 'Fit'])
+plt.title('Logistic Functional Graph')
+plt.show()
