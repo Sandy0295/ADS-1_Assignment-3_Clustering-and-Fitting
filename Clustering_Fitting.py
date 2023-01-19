@@ -141,3 +141,6 @@ print('Converted Datatype:',type(selected_data_df))
 
 #resetting the indexes of the dataframe to assign new column names
 selected_data_df = selected_data_df.reset_index()
+
+#assigning the new column names
+selected_data_df.columns = ['Year','Urban population growth (annual %)']
