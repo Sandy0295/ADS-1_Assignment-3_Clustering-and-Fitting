@@ -181,3 +181,12 @@ forecast = logi(range_year, *parameter)
 
 #calculating the upper limit and lowe limit of the error range using the custom module function
 err_range_low, err_range_up = error.err_ranges(range_year, logi, parameter, sigma)
+
+#plotting the graph to display the error ranges and confidence levels
+plt.plot(selected_data_df['Year'], selected_data_df['Urban population growth (annual %)'], label='Urban population growth (annual %)')
+plt.plot(range_year, forecast, label='Forecast')
+plt.fill_between(range_year, err_range_low, err_range_up, color='Yellow', alpha=0.7)
+plt.xlabel('Year')
+plt.ylabel('Urban population growth (annual %)')
+plt.legend()
+plt.show()
