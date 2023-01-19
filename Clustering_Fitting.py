@@ -147,3 +147,9 @@ selected_data_df.columns = ['Year','Urban population growth (annual %)']
 
 #plotting the data which prodcues exponential graph
 selected_data_df.plot('Year','Urban population growth (annual %)')
+
+#coverting the values of Year to numeric type
+selected_data_df['Year'] = pd.to_numeric(selected_data_df['Year'])
+
+#calculating the parameter and covariance for the curve fit using the exponential function
+parameter, covariance = curve_fit(exponen_graph,selected_data_df['Year'],selected_data_df['Urban population growth (annual %)'], p0=(73233967692.102798, 0.03))
