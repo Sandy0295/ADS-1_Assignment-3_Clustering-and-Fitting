@@ -174,3 +174,10 @@ selected_data_df['Fit'] = logi(selected_data_df['Year'], *parameter)
 selected_data_df.plot('Year', ['Urban population growth (annual %)', 'Fit'])
 plt.title('Logistic Functional Graph')
 plt.show()
+
+#selecting the range of years taht we used for clustering and fitting
+range_year = np.arange(1970, 2010)
+forecast = logi(range_year, *parameter)
+
+#calculating the upper limit and lowe limit of the error range using the custom module function
+err_range_low, err_range_up = error.err_ranges(range_year, logi, parameter, sigma)
