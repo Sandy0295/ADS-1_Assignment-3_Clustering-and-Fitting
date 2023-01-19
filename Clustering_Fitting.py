@@ -71,3 +71,9 @@ selected_df = df_countries.loc[df_countries["Indicator Name"].isin(selected_indi
 
 #dropped two columns for clustering purpose
 selected_df = selected_df.drop(columns=['Country Name','Indicator Name',],axis=1)
+
+#performing data preproceesing by labelling the column as a categorical column
+label_encoder = LabelEncoder()
+#converting the Class column into encoding values to compare with ground truth values after clustering predictions
+selected_df['Country Code'] = label_encoder.fit_transform(selected_df['Country Code'])
+selected_df['Indicator Code'] = label_encoder.fit_transform(selected_df['Indicator Code'])
