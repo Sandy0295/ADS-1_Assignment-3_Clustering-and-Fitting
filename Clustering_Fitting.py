@@ -77,3 +77,9 @@ label_encoder = LabelEncoder()
 #converting the Class column into encoding values to compare with ground truth values after clustering predictions
 selected_df['Country Code'] = label_encoder.fit_transform(selected_df['Country Code'])
 selected_df['Indicator Code'] = label_encoder.fit_transform(selected_df['Indicator Code'])
+
+# normalizing the input data
+selectedData_rank=selected_df.rank(method='first')
+#normalized is subraction from average main on std
+normalized_data=(selectedData_rank-selectedData_rank.mean())/selectedData_rank.std()
+print('Normalized Data:',normalized_data)
