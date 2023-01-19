@@ -83,3 +83,15 @@ selectedData_rank=selected_df.rank(method='first')
 #normalized is subraction from average main on std
 normalized_data=(selectedData_rank-selectedData_rank.mean())/selectedData_rank.std()
 print('Normalized Data:',normalized_data)
+
+#using the elbow method to find out the K values to form the clusters
+sum_cluster_squares = []
+for i in range(1, 11):
+    k_means_algo = KMeans(n_clusters = i, init = 'k-means++', random_state = 42)
+    k_means_algo.fit(selected_df[['1970','2010']])
+    sum_cluster_squares.append(k_means_algo.inertia_)
+plt.plot(range(1, 11), sum_cluster_squares)
+plt.title('Elbow Method')
+plt.xlabel('Clusters')
+plt.ylabel('Inertia Value')
+plt.show()
